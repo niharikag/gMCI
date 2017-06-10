@@ -1,0 +1,17 @@
+{
+    "contents" : "mciModel <- function(x, statistic=\"DEV\", ...){\n  UseMethod(\"mciModel\")\n}\n\nmciModel.table <- function(x, statistic=\"DEV\", ...){\n  mciModel_table(x, statistic, ...)\n}\n\nmciModel.data.frame <- function(x, statistic=\"DEV\", ...){\n  set <- names(x)\n  wdata       <- x[,set]\n  varTypes    <- uniquePrim(unlist(lapply(wdata, class)))\n  has.factor  <- \"factor\" %in% varTypes\n  \n  \n  if (has.factor){\n    mciModel_table(xtabs(count~., data=x), statistic,...)\n  } else {  \n    stop(\"NOt a contingency table...\\n\")\n  }    \n}\n\n\nprint.mciModel <- function(x, ...){\n  \n    #cat(\"Modeling \\n\")  \n  #model = unlist(x$model )\n  cat(\"Model:\\n\")  \n  cat(sprintf( \"%s\", x$model ))\n  if(x$statistic == \"DEV\"){\n    cat(sprintf(\"\\n Statistic (%s): %8.3f df: %s p-value: %6.4f method: %s\\n\",\n               x$statistic, x$dev, x$df, x$p.value, x$method))\n  }\n  else{\n    cat(sprintf(\"\\n Statistic (%s): %8.3f \",\n                x$statistic, x$aic))\n  }\n}\n\nsummary.mciModel <- function(object,...){\n  str(object,max.level=1)\n  return(invisible(object))\n}",
+    "created" : 1433645872325.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1328154645",
+    "id" : "BDE227F6",
+    "lastKnownWriteTime" : 1433646557,
+    "path" : "E:/RPrograms/gMCI/gMCI/R/mciModel.R",
+    "project_path" : "R/mciModel.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

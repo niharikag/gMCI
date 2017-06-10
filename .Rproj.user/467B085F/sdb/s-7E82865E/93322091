@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## ########################################################\n##\n## Testing for mutual condional independence in a dataframe\n## <x>  : dataframe\n## <miset>: NULL, a vector of variables to be tested for \n##          MCI(mutual conditional independence)\n## <cfset>: NULL, a vector of conditioning variable\n## <statistic>: DEV, deviance or chi-squae based test\n## ########################################################\nmciTest_dataframe <- function(x, miset=NULL,cfset=NULL,statistic=\"DEV\",...){\n \n  set <- names(x)\n  wdata       <- x[,set]\n  varTypes    <- uniquePrim(unlist(lapply(wdata, class)))\n  has.factor  <- \"factor\" %in% varTypes\n  \n  if (has.factor){\n    mciTest_table(xtabs(count~., data=x),miset=miset,cfset=cfset,...)\n  } else {  \n    stop(\"NOt a contingency table...\\n\")\n  }    \n  \n  ##convert a data frame to contingency table and then call mciTest_table\n}",
+    "created" : 1497068126529.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2364146386",
+    "id" : "93322091",
+    "lastKnownWriteTime" : 1433710432,
+    "last_content_update" : 1433710432,
+    "path" : "C:/Niharika/RPrograms/gMCI/R/mciTest_dataframe.R",
+    "project_path" : "R/mciTest_dataframe.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

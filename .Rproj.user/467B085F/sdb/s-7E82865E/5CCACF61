@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "mciTest <- function(x,mciset=NULL,cfset=NULL,statistic=\"DEV\",...){\n  UseMethod(\"mciTest\")\n}\n\nmciTest.table <- function(x, mciset=NULL,cfset=NULL, statistic=\"DEV\", ...){\n  mciTest_table(x, mciset, cfset, statistic=\"DEV\", ...)\n}\n\nmciTest.data.frame <- function(x, mciset=NULL,cfset=NULL, statistic=\"DEV\", ...){\n  mciTest_dataframe(x, mciset, cfset, statistic=\"DEV\",...)\n}\n\n\nprint.mciTest <- function(x, ...){\n  if (length(x$mset) >= 2){\n   ## cat(\"Testing\", x$varNames[1], \"_|_\", x$varNames[2], \"|\",x$varNames[-(1:2)],\"\\n\")\n    cat(\"Testing \")\n    cat(x$mset[1])\n    for(i in 2:length(x$mset)){\n      cat(\"_||_\",x$mset[i])\n    }\n    \n    if(!is.null(x$cset)){      \n      cat(\"|\", x$cset[1])\n      if(length(x$cset) > 1){\n        for(i in 2:length(x$cset)){\n          cat(\",\",x$cset[i])\n        }  \n      }\n    }\n    cat(\"\\n\")  \n  }\n  cat(sprintf(\"Statistic (%s): %8.3f df: %s p-value: %6.4f method: %s\\n\",\n              x$statname, x$statistic, x$df, x$p.value, x$method))\n}\n\nsummary.mciTest <- function(object,...){\n  str(object,max.level=1)\n  return(invisible(object))\n}",
+    "created" : 1497068084360.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2288678463",
+    "id" : "5CCACF61",
+    "lastKnownWriteTime" : 1434348976,
+    "last_content_update" : 1434348976,
+    "path" : "C:/Niharika/RPrograms/gMCI/R/mciTest.R",
+    "project_path" : "R/mciTest.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

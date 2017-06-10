@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## testEdges: List all edges that can be added with test statistic, Find most significant edge\n\n## Author: Niharika\n\n## Input\n## object   : imod-object\n## edgeList : A list of edges; each edge is a vector\n\n## Output\n## A dataframe with test statistics (p-value or change in AIC), edges and logical\n## telling if the edge can be added \n\ngetSigEdge <- function(object, edgeSet=NULL,...){\n  UseMethod(\"getSigEdge\")\n}\n\ngetSigEdge <- function(object, edgeSet=NULL,...){\n  \n}",
+    "created" : 1497068161463.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1213000572",
+    "id" : "94DAFE32",
+    "lastKnownWriteTime" : 1433710436,
+    "last_content_update" : 1433710436,
+    "path" : "C:/Niharika/RPrograms/gMCI/R/modelList.R",
+    "project_path" : "R/modelList.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

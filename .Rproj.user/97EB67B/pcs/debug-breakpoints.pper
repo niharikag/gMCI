@@ -1,0 +1,21 @@
+{
+    "debugBreakpointsState" : {
+        "breakpoints" : [
+            {
+                "editor_line_number" : 181,
+                "editor_state" : 1,
+                "function_name" : "mci.aic",
+                "function_steps" : "5",
+                "id" : 4,
+                "is_package_breakpoint" : true,
+                "is_pending_debug_completion" : false,
+                "line_number" : 181,
+                "needs_updated_steps" : false,
+                "package_name" : "gMCI",
+                "path" : "E:/RPrograms/gMCI/gMCI/R/mciModel_table.R",
+                "state" : 1,
+                "type" : 0
+            }
+        ]
+    }
+}

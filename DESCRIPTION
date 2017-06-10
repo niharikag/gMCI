@@ -1,0 +1,17 @@
+Package: gMCI
+Type: Package
+Title: Graphical log linear models
+Version: 1.0
+Date: 2015-06-01
+Author: Niharika Gauraha
+Maintainer: Niharika Gauraha <niharika.gauraha@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: GPL (>= 2)
+Depends: R (>= 2.15.2),methods,gRbase,gRain,gRim,MASS,igraph
+Imports: igraph
+Encoding: latin1
+Suggests: Rgraphviz
+ByteCompile: yes
+LinkingTo: Rcpp,RcppArmadillo
+NeedsCompilation: yes
+Repository: CRAN

@@ -1,0 +1,17 @@
+{
+    "contents" : ".splitSet <- function(mset,e){  \n  ans = mset\n  if(is.element(e[1],mset) && is.element(e[2],mset)){\n    i <- match(e,mset)\n    ans <- list(mset[-i[2]], mset[-i[1]])\n  }\n  ans\n}\n\n.add.term <-  function(mlist, e){\n  idx<-isin(mlist,e,TRUE)\n  zzz <- unlist(\n    lapply(1:length(mlist), function(i){\n      if (idx[i]==1)\n        .splitSet(mlist[[i]],e)\n      else\n        mlist[i]\n    }), recursive=FALSE)\n  ans <- removeRedundant(zzz)\n  ans\n}\n\n.list2pairs <- function(x){\n  if (length(x)>0){\n    if (!inherits(x,\"list\"))\n      x <- list(x)\n    x <- lapply(x, function(zzz) lapply(combn(zzz,2, simplify=FALSE), sort))\n    x <- unlist(x, recursive=FALSE)\n  }\n  x\n}\n\n.vec2pairs <- function(x){\n  if (length(x)>2){\n    x = combn(x,2, simplify=FALSE)\n  }\n  x\n}\n\nfitNullModel<- function(x){\n  varNames = names(dimnames(x))\n  fm = as.formula(paste(\"~\",paste(varNames,collapse=\"+\")))\n  ans = loglm(fm,reinis)\n  ans\n}\n\n.terms2adjMat <- function(terms){\n  fm = as.formula(paste(\"~\",paste(terms,collapse=\"+\")))\n  um = ug(fm)\n  adMat = as.adjMAT(um)\n  adMat\n}\n\n.terms2MaxCliques <- function(terms){\n  fm = as.formula(paste(\"~\",paste(terms,collapse=\"+\")))\n  um = ug(fm)\n  adMat = as.adjMAT(um)\n  mc = maxCliqueMAT(adMat)\n  mc$maxCliques\n}\n\n.getNumList<- function(x, varNames){\n  numList <- lapply(x, function(ll) {\n    match(ll, varNames) })\n return(numList)   \n}\n\n#compute AIC for a given fit\ncomputAIC <- function(x, maxCls,fit.table){\n  varNames = names(dimnames(x))\n  iii <- x* fit.table > 0\n  logL      <- sum(x[iii] * log(fit.table[iii]/sum(fit.table)))\n  \n  numList <- lapply(maxCls, function(ll) {\n    match(ll, varNames) })\n  \n  dm = loglinGenDim(numList,x)  \n  ans <- list(logL = logL, aic = -2*logL + 2*dm,dim = dm)\n  #lgfit$bic       <- -2*lgfit$logL + log(sum(x))*lgfit$df\n  return(ans)\n}\n\n#compute AIC of saturated model\ncomput.sat.AIC <- function(x){\n  varNames = names(dimnames(x))\n  iii <- x > 0\n  logL      <- sum(x[iii] * log(x[iii]/sum(x)))\n  \n  numList <- lapply(list(varNames), function(ll) {\n    match(ll, varNames) })\n  \n  dm = loglinGenDim(numList,x)  \n  aic       <- -2*logL + 2*dm\n  #lgfit$bic       <- -2*lgfit$logL + log(sum(x))*lgfit$df\n  return(aic)\n}",
+    "created" : 1433673225056.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2294448377",
+    "id" : "F90E6887",
+    "lastKnownWriteTime" : 1433740457,
+    "path" : "E:/RPrograms/gMCI/gMCI/R/utilities.R",
+    "project_path" : "R/utilities.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
